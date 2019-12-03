@@ -14,12 +14,14 @@ public class Scene
 
    public Scene()
    {
-      lights.add(createLight(100, 20, -125, 0xFFFFAA));
-      lights.add(createLight(-250, 190, 150, 0xAAAAFF));
+      lights.add(createLight(100, 10, -125, 0xFFFFFF));
+      lights.add(createLight(-250, 190, 150, 0xFFFFFF));
 
       primitives.add(createPlane(0, 1, 0, -30));
       primitives.add(createSphere(-80, -10, 30, 20, 0xFF8811));
-      primitives.add(createBox(-105, 25, -90, 105, 50, 125, 0x00A86B));
+      primitives.add(createSphere(-60, 115, -20, 5, 0xFFFFFF));
+      primitives.add(createBox(-150, 40, -110, 150, 70, 110, 0x00A86B)); // mesa
+      primitives.add(createBox(-1, 70, -110, 1, 75, 110, 0xFFFFFF));
       primitives.add(createCylinder(-90, -30, 70, 10, 60, 0xDEB887));
       primitives.add(createCylinder(90, -30, 70, 10, 60, 0xDEB887));
       primitives.add(createCylinder(-90, -30, -70, 10, 60, 0xDEB887));
@@ -27,7 +29,31 @@ public class Scene
       primitives.add(createDisc(-90, 30, 80, 0, 1, 0, 10, 0x1188FF));
       primitives.add(createDisc(90, 30, 80, 0, 1, 0, 10, 0x1188FF));
       primitives.add(createDisc(-90, 30, -80, 0, 1, 0, 10, 0x1188FF));
-      primitives.add(createDisc(90, 30, -80, 0, 1, 0, 10, 0x1188FF));
+      primitives.add(createDisc(90, 30, -80, 0, 1, 0, 10, 0x1188FF)); 
+      
+      /* lights.add(createLight(100, 300, -125, 0xFFFFAA));
+      lights.add(createLight(-250, 190, 150, 0xAAAAFF));
+
+      primitives.add(createPlane(0, 1, 0, -30));
+      primitives.add(createSphere(-80, -10, 30, 20, 0xFF8811));
+      primitives.add(createSphere(-40, -10, -40, 10, 0xFF8811));
+      primitives.add(createSphere(-30, -0, 0, 30, 0xFF8811));
+      primitives.add(createSphere(30, -0, 0, 30, 0xFF8811));
+      primitives.add(createSphere(80, -10, -30, 20, 0xFF8811));
+      primitives.add(createSphere(0, 30, 60, 20, 0xFF8811));
+      primitives.add(createBox(-20, -30, 40, 20, 10, 80, 0x88FF11));
+      primitives.add(createBox(-40, -30, 140, 40, 50, 180, 0x88FF11));
+      primitives.add(createBox(-80, -30, 100, -50, -10, 140, 0x88FF11));
+      primitives.add(createCylinder(80, -30, -30, 40, 10, 0x1188FF));
+      primitives.add(createCylinder(-90, -30, 80, 10, 123, 0x1188FF));
+      primitives.add(createCylinder(90, -30, 80, 10, 123, 0x1188FF));
+      primitives.add(createCylinder(-90, -30, -80, 10, 123, 0x1188FF));
+      primitives.add(createCylinder(90, -30, -80, 10, 123, 0x1188FF));
+      primitives.add(createDisc(80, -20, -30, 0, 1, 0, 40, 0x1188FF));
+      primitives.add(createDisc(-90, 93, 80, 0, 1, 0, 10, 0x1188FF));
+      primitives.add(createDisc(90, 93, 80, 0, 1, 0, 10, 0x1188FF));
+      primitives.add(createDisc(-90, 93, -80, 0, 1, 0, 10, 0x1188FF));
+      primitives.add(createDisc(90, 93, -80, 0, 1, 0, 10, 0x1188FF)); */
    }
 
    public Geometry intersect(final Ray inRay, final Ray outRay)
