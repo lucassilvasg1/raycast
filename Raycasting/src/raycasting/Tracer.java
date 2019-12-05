@@ -45,8 +45,8 @@ public class Tracer
             camera.transform(ray.origin.set(0.0, 0.0, 1.0)).mul(-camera.distance);
             for (int wx = -xStart; wx < xStart; wx++)
             {
-               camera.transform(ray.direction.set(wx, yStart - finalY, camera.fov)).normalize(); // multiplica o vetor pela matriz de transforma��o
-               pixels[offset++] = traceRay(scene, ray, 0); //passa a cena com os objetos e o raio transformado de acordo com as conf de c�mera
+               camera.transform(ray.direction.set(wx, yStart - finalY, camera.fov)).normalize(); // multiplica o vetor pela matriz de transformação
+               pixels[offset++] = traceRay(scene, ray, 0); //passa a cena com os objetos e o raio transformado de acordo com as conf de câmera
             }
          }));
       }
