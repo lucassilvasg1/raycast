@@ -34,7 +34,7 @@ public class Controller
 
    public void step()
    {
-      camera.rotate(0.1, 0.5);
+      camera.rotate(0.6, -1.0);
       tracer.render(camera, scene);
       viewer.setRGB(pixels);
       
