@@ -17,7 +17,7 @@ public class Controller
    private final int[] pixels;
 
    private double angle;
-
+   
    public Controller(Viewer v, Scene s)
    {
       viewer = v;
@@ -34,7 +34,7 @@ public class Controller
 
    public void step()
    {
-      camera.rotate(0.7, 0.0);
+      camera.rotate(0.7, -0.3);
       tracer.render(camera, scene);
       viewer.setRGB(pixels);
       
