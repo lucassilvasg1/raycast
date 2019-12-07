@@ -30,13 +30,47 @@ public class Scene
       primitives.add(createCylinder(90, -30, -70, 10, 60, 0xDEB887));
       
       // sinuca
-      primitives.add(createSphere(-60, 115, -20, 10, 0x2E8B57));
       primitives.add(createBox(-150, 40, 410, 150, 70, 210, 0x2E8B57)); // mesa
-      primitives.add(createCylinder(-140, -20, 400, 10, 60, 0xDEB887));
-      primitives.add(createCylinder(140, -20, 400, 10, 60, 0xDEB887));
-      primitives.add(createCylinder(-140, -20, 220, 10, 60, 0xDEB887));
-      primitives.add(createCylinder(140, -20, 220, 10, 60, 0xDEB887));
-      
+      primitives.add(createBox(-120, 20, 410, 120, 40, 210, 0x2E8B57));
+      primitives.add(createBox(-30, 30, 210, 30, 50, 208, 0x6f330b)); //Gaveta das bolas
+      primitives.add(createBox(-10, 40, 208, 10, 45, 206, 0x492106));
+      primitives.add(createBox(-155, 70, 420, -150, 74, 200, 0x6f330b));//bordas da mesa
+      primitives.add(createBox(155, 70, 420, 150, 74, 200, 0x6f330b));
+      primitives.add(createBox(-150, 70, 420, 150, 74, 410, 0x6f330b));
+      primitives.add(createBox(-150, 70, 210, 150, 74, 200, 0x6f330b));
+      primitives.add(createCylinder(-140, -20, 400, 6, 60, 0xDEB887)); //pés da sinuca
+      primitives.add(createCylinder(140, -20, 400, 6, 60, 0xDEB887));
+      primitives.add(createCylinder(-140, -20, 220, 6, 60, 0xDEB887));
+      primitives.add(createCylinder(140, -20, 220, 6, 60, 0xDEB887));
+      primitives.add(createCylinder(-140, 70, 400, 10, 1, 0x2E8B57)); //Buracos da Sinuca Contorno
+      primitives.add(createCylinder(140, 70, 400, 10, 1, 0x2E8B57));
+      primitives.add(createCylinder(-140, 70, 220, 10, 1, 0x2E8B57));
+      primitives.add(createCylinder(140, 70, 220, 10, 1, 0x2E8B57));
+      primitives.add(createCylinder(0, 70, 400, 10, 1, 0x2E8B57));
+      primitives.add(createCylinder(0, 70, 220, 10, 1, 0x2E8B57));
+      primitives.add(createDisc(-140, 71, 400, 0, 360, 0, 10, 0x193c1d));//Buracos da Sinuca Preenchimento
+      primitives.add(createDisc(140, 71, 400, 0, 360, 0, 10, 0x193c1d));
+      primitives.add(createDisc(-140, 71, 220, 0, 360, 0, 10, 0x193c1d));
+      primitives.add(createDisc(140, 71, 220, 0, 360, 0, 10, 0x193c1d));
+      primitives.add(createDisc(0, 71, 400, 0, 360, 0, 10, 0x193c1d));
+      primitives.add(createDisc(0, 71, 220, 0, 360, 0, 10, 0x193c1d));
+      primitives.add(createSphere(30, 78, 310, 8, 0xffd700)); //Bolas da Sinuca
+      primitives.add(createSphere(45, 78, 320, 8, 0x0028ff)); //Segunda Linha
+      primitives.add(createSphere(45, 78, 300, 8, 0xee0000));
+      primitives.add(createSphere(60, 78, 330, 8, 0x800080)); //Terceira Linha
+      primitives.add(createSphere(60, 78, 310, 8, 0xffa500)); 
+      primitives.add(createSphere(60, 78, 290, 8, 0x408d78));
+      primitives.add(createSphere(75, 78, 340, 8, 0x834a4a)); //Quarta Linha
+      primitives.add(createSphere(75, 78, 320, 8, 0x000000));
+      primitives.add(createSphere(75, 78, 300, 8, 0xffd700));
+      primitives.add(createSphere(75, 78, 280, 8, 0x0028ff));
+      primitives.add(createSphere(90, 78, 350, 8, 0xee0000)); //Quinta Linha
+      primitives.add(createSphere(90, 78, 330, 8, 0x800080));
+      primitives.add(createSphere(90, 78, 310, 8, 0xffa500));
+      primitives.add(createSphere(90, 78, 290, 8, 0x408d78));
+      primitives.add(createSphere(90, 78, 270, 8, 0x834a4a));
+
+     
    }
 
    public Geometry intersect(final Ray inRay, final Ray outRay)
