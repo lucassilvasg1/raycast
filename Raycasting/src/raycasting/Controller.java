@@ -22,7 +22,7 @@ public class Controller
    {
       viewer = v;
       scene = s;
-      camera = new Camera(500.0, viewer.getHeight());
+      camera = new Camera(450.0, viewer.getHeight());
       pixels = new int[viewer.getWidth() * viewer.getHeight()];
       tracer = new Tracer(pixels, viewer.getWidth(), viewer.getHeight());
    }
@@ -34,7 +34,7 @@ public class Controller
 
    public void step()
    {
-      camera.rotate(0.8, 0.8);
+      camera.rotate(0.1, 0.5);
       tracer.render(camera, scene);
       viewer.setRGB(pixels);
       

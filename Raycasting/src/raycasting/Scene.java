@@ -16,18 +16,19 @@ public class Scene
    {
       lights.add(createLight(100, 10, -125, 0xFFFFFF));
       lights.add(createLight(-250, 190, 150, 0xFFFFFF));
-
+      
+      //chao
+      primitives.add(createBox(-1000, -30, -1000, 1000, -29, 1000, 0x3a2111));
       primitives.add(createPlane(0, 1, 0, -30));
       // ping pong
-      primitives.add(createSphere(-60, 115, -20, 10, 0xFFFFFF));
-      primitives.add(createBox(-150, 40, -110, 150, 70, 110, 0x6492a4)); // mesa
+      primitives.add(createSphere(-60, 115, -20, 4, 0xFFFFFF));
+      primitives.add(createBox(-150, 60, -110, 150, 70, 110, 0x6492a4)); // mesa
       primitives.add(createBox(-1, 70, -110, 1, 75, 110, 0xFFFFFF));
-      primitives.add(createBox(-150, 70, -4, 150, 71, -3, 0xFFFFFF)); 
       primitives.add(createBox(-150, 70, -1, 150, 71, 1, 0xFFFFFF)); 
-      primitives.add(createCylinder(-90, -30, 70, 10, 60, 0xDEB887));
-      primitives.add(createCylinder(90, -30, 70, 10, 60, 0xDEB887));
-      primitives.add(createCylinder(-90, -30, -70, 10, 60, 0xDEB887));
-      primitives.add(createCylinder(90, -30, -70, 10, 60, 0xDEB887));
+      primitives.add(createCylinder(-90, -30, 70, 10, 90, 0xDEB887));
+      primitives.add(createCylinder(90, -30, 70, 10, 90, 0xDEB887));
+      primitives.add(createCylinder(-90, -30, -70, 10, 90, 0xDEB887));
+      primitives.add(createCylinder(90, -30, -70, 10, 90, 0xDEB887));
       
       // sinuca
       primitives.add(createBox(-150, 40, 410, 150, 70, 210, 0x2E8B57)); // mesa
@@ -38,10 +39,10 @@ public class Scene
       primitives.add(createBox(155, 70, 420, 150, 74, 200, 0x6f330b));
       primitives.add(createBox(-150, 70, 420, 150, 74, 410, 0x6f330b));
       primitives.add(createBox(-150, 70, 210, 150, 74, 200, 0x6f330b));
-      primitives.add(createCylinder(-140, -20, 400, 6, 60, 0xDEB887)); //pés da sinuca
-      primitives.add(createCylinder(140, -20, 400, 6, 60, 0xDEB887));
-      primitives.add(createCylinder(-140, -20, 220, 6, 60, 0xDEB887));
-      primitives.add(createCylinder(140, -20, 220, 6, 60, 0xDEB887));
+      primitives.add(createCylinder(-140, -30, 400, 6, 60, 0xDEB887)); //pés da sinuca
+      primitives.add(createCylinder(140, -30, 400, 6, 60, 0xDEB887));
+      primitives.add(createCylinder(-140, -30, 220, 6, 60, 0xDEB887));
+      primitives.add(createCylinder(140, -30, 220, 6, 60, 0xDEB887));
       primitives.add(createCylinder(-140, 70, 400, 10, 1, 0x2E8B57)); //Buracos da Sinuca Contorno
       primitives.add(createCylinder(140, 70, 400, 10, 1, 0x2E8B57));
       primitives.add(createCylinder(-140, 70, 220, 10, 1, 0x2E8B57));
