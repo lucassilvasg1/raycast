@@ -1,5 +1,8 @@
 package raycasting;
 
+import java.awt.Point;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -10,14 +13,16 @@ public class Controller
 
    private final Scene scene;
 
-   private final Camera camera;
+   private Camera camera;
 
    private final Tracer tracer;
 
    private final int[] pixels;
-
-   private double angle;
    
+   public final double position1, position2, position3;
+   
+   public static double POSITION = 1000000;
+
    public Controller(Viewer v, Scene s)
    {
       viewer = v;
@@ -25,6 +30,9 @@ public class Controller
       camera = new Camera(900.0, viewer.getHeight());
       pixels = new int[viewer.getWidth() * viewer.getHeight()];
       tracer = new Tracer(pixels, viewer.getWidth(), viewer.getHeight());
+      position1 = scene.lights.get(0).position.z;
+      position2 = scene.lights.get(1).position.z;
+      position3 = scene.lights.get(2).position.z;
    }
 
    public Viewer getView()
@@ -35,8 +43,67 @@ public class Controller
    public void step()
    {
       camera.rotate(0.7, -0.3);
+      camera.distance = 900;
       tracer.render(camera, scene);
       viewer.setRGB(pixels);
+      
+      viewer.addKeyListener(new KeyListener()
+      {
+         
+         @Override
+         public void keyTyped(KeyEvent e)
+         {
+         }
+         
+         @Override
+         public void keyReleased(KeyEvent e)
+         {
+         }
+         
+         @Override
+         public void keyPressed(KeyEvent e)
+         {
+            if(e.getKeyCode() == KeyEvent.VK_1)
+            {
+               Light l = scene.lights.get(0); 
+               
+               if(l.position.z == POSITION)
+               {
+                  l.position.z = position1;
+               }
+               else
+               {
+                  l.position = new Vector(l.position.x, l.position.y, POSITION); 
+               }
+            }
+            if(e.getKeyCode() == KeyEvent.VK_2)
+            {
+               Light l = scene.lights.get(1); 
+               
+               if(l.position.z == POSITION)
+               {
+                  l.position.z = position2;
+               }
+               else
+               {
+                  l.position = new Vector(l.position.x, l.position.y, POSITION); 
+               }
+            }
+            if(e.getKeyCode() == KeyEvent.VK_3)
+            {
+               Light l = scene.lights.get(2); 
+               
+               if(l.position.z == POSITION)
+               {
+                  l.position.z = position3;
+               }
+               else
+               {
+                  l.position = new Vector(l.position.x, l.position.y, POSITION); 
+               }
+            }
+         }
+      });
       
       viewer.addMouseListener(new MouseListener()
       {
@@ -64,23 +131,27 @@ public class Controller
          @Override
          public void mouseClicked(MouseEvent e)
          {
-            Ray ray = new Ray();
             
-            int x = (e.getX() - 600);
-            int y = (e.getY() - 400) *(-1);
+            int ximg = (viewer.getWidth() - viewer.getImage().getWidth()) / 2;
+            int yimg = (viewer.getHeight() - viewer.getImage().getHeight()) / 2;
+            Point imgLocation = new Point(ximg, yimg);
             
+            Point relative = e.getPoint();
+            relative.x -= imgLocation.x;
+            relative.y -= imgLocation.y;
+            
+            //-150, 60, -110, 150, 70, 110,
+            int x = relative.x - 300;
+            int y = relative.y;
+            
+            int xStart = viewer.getWidth() >> 1; // divide por dois 
             int yStart = viewer.getHeight() >> 1;
             
-            // WX: -211
-            // YSTART E FINAL: 119
+            Ray ray = new Ray();
+            camera.transform(ray.origin.set(0.0, 0.0, 1.0)).mul(-camera.distance);
+            camera.transform(ray.direction.set(x, yStart - y, camera.fov)).normalize(); // multiplica o vetor pela matriz de transformação
             
             Ray hitRay = new Ray();
-
-            camera.transform(ray.origin.set(0.0, 0.0, 1.0)).mul(-camera.distance);
-            camera.transform(ray.direction.set(x, yStart - y, camera.fov)).normalize();
-
-            ray.direction.set(x, yStart - y, camera.fov);
-            
             Geometry geometry = scene.intersect(ray, hitRay);
             
             System.out.println("x:" + x + " Y:" + y);
@@ -91,9 +162,9 @@ public class Controller
             }
             else
             {
+               scene.primitives.remove(geometry);
                System.out.println(geometry.getClass().getCanonicalName());
             }
-            
          }
       });
      

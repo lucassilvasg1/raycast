@@ -3,7 +3,7 @@ package raycasting;
 public class Camera
 {
 
-   public final double distance;
+   public double distance;
 
    public final double fov; // field of view
 

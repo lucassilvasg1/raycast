@@ -19,8 +19,6 @@ public class Scene
       lights.add(createLight(-680, 400, 110, 0x0028ff));// luz balcao bar
       lights.add(createLight(0, 400, 999, 0xdbd3cd));// luz sofa
       
-      
-      
       //chao
       primitives.add(createBox(-700, -30, -1000, 700, -29, 1000, 0x3c1301));
       primitives.add(createPlane(0, 1, 0, -30));
@@ -57,7 +55,7 @@ public class Scene
       primitives.add(createBox(155, 70, 420, 150, 74, 200, 0x3c1301));
       primitives.add(createBox(-150, 70, 420, 150, 74, 410, 0x3c1301));
       primitives.add(createBox(-150, 70, 210, 150, 74, 200, 0x3c1301));
-      primitives.add(createCylinder(-140, -30, 400, 6, 70, 0xf4d58c)); //pés da sinuca
+      primitives.add(createCylinder(-140, -30, 400, 6, 70, 0xf4d58c)); //pï¿½s da sinuca
       primitives.add(createCylinder(140, -30, 400, 6, 70, 0xf4d58c));
       primitives.add(createCylinder(-140, -30, 220, 6, 70, 0xf4d58c));
       primitives.add(createCylinder(140, -30, 220, 6, 70, 0xf4d58c));
@@ -270,7 +268,7 @@ public class Scene
       primitives.add(createCylinder(-476, 100, -100, 7, 13, 0xcca50a)); //corpo do copo
       primitives.add(createCylinder(-476, 113, -100, 7, 4, 0xe0e5e7));
       primitives.add(createDisc(-476, 117, -100, 0, 360, 0, 7, 0xe0e5e7));
-      primitives.add(createBox(-478, 112, -107, -474, 114, -112, 0xebfffd));//Braço do copo
+      primitives.add(createBox(-478, 112, -107, -474, 114, -112, 0xebfffd));//Braï¿½o do copo
       primitives.add(createBox(-478, 102, -110, -474, 114, -112, 0xebfffd));
       primitives.add(createBox(-478, 102, -107, -474, 104, -112, 0xebfffd));
       
@@ -278,7 +276,7 @@ public class Scene
       primitives.add(createCylinder(-484, 100, 0, 7, 13, 0xcca50a)); //corpo do copo
       primitives.add(createCylinder(-484, 113, 0, 7, 4, 0xe0e5e7));
       primitives.add(createDisc(-484, 117, 0, 0, 360, 0, 7, 0xe0e5e7));
-      primitives.add(createBox(-486, 112, -7, -482, 114, -12, 0xebfffd));//Braço do copo
+      primitives.add(createBox(-486, 112, -7, -482, 114, -12, 0xebfffd));//Braï¿½o do copo
       primitives.add(createBox(-486, 102, -10, -482, 114, -12, 0xebfffd));
       primitives.add(createBox(-486, 102, -7, -482, 104, -12, 0xebfffd));
       
@@ -286,7 +284,7 @@ public class Scene
       primitives.add(createCylinder(-480, 100, 100, 7, 13, 0xcca50a)); //corpo do copo
       primitives.add(createCylinder(-480, 113, 100, 7, 4, 0xe0e5e7));
       primitives.add(createDisc(-480, 117, 100, 0, 360, 0, 7, 0xe0e5e7));
-      primitives.add(createBox(-482, 112, 93, -478, 114, 88, 0xebfffd));//Braço do copo
+      primitives.add(createBox(-482, 112, 93, -478, 114, 88, 0xebfffd));//Braï¿½o do copo
       primitives.add(createBox(-482, 102, 90, -478, 114, 88, 0xebfffd));
       primitives.add(createBox(-482, 102, 93, -478, 104, 88, 0xebfffd));
       
@@ -294,7 +292,7 @@ public class Scene
       primitives.add(createCylinder(-488, 100, 200, 7, 13, 0xcca50a)); //corpo do copo
       primitives.add(createCylinder(-488, 113, 200, 7, 4, 0xe0e5e7));
       primitives.add(createDisc(-488, 117, 200, 0, 360, 0, 7, 0xe0e5e7));
-      primitives.add(createBox(-490, 112, 193, -486, 114, 188, 0xebfffd));//Braço do copo
+      primitives.add(createBox(-490, 112, 193, -486, 114, 188, 0xebfffd));//Braï¿½o do copo
       primitives.add(createBox(-490, 102, 190, -486, 114, 188, 0xebfffd));
       primitives.add(createBox(-490, 102, 193, -486, 104, 188, 0xebfffd));
       
@@ -302,7 +300,7 @@ public class Scene
       primitives.add(createCylinder(-476, 100, 300, 7, 13, 0xcca50a)); //corpo do copo
       primitives.add(createCylinder(-476, 113, 300, 7, 4, 0xe0e5e7));
       primitives.add(createDisc(-476, 117, 300, 0, 360, 0, 7, 0xe0e5e7));
-      primitives.add(createBox(-478, 112, 293, -474, 114, 288, 0xebfffd));//Braço do copo
+      primitives.add(createBox(-478, 112, 293, -474, 114, 288, 0xebfffd));//Braï¿½o do copo
       primitives.add(createBox(-478, 102, 290, -474, 114, 288, 0xebfffd));
       primitives.add(createBox(-478, 102, 293, -474, 104, 288, 0xebfffd));
       
@@ -345,7 +343,7 @@ public class Scene
       
       //mesa do sofa
       primitives.add(createBox(-100, 10, 800, 100, 20, 680, 0x91a5ae)); //base
-      primitives.add(createCylinder(-80, -30, 780, 3, 40, 0xf4d58c)); //pés da mesa
+      primitives.add(createCylinder(-80, -30, 780, 3, 40, 0xf4d58c)); //pï¿½s da mesa
       primitives.add(createCylinder(80, -30, 780, 3, 40, 0xf4d58c));
       primitives.add(createCylinder(-80, -30, 700, 3, 40, 0xf4d58c));
       primitives.add(createCylinder(80, -30, 700, 3, 40, 0xf4d58c));
@@ -354,19 +352,19 @@ public class Scene
       //Sofa
       primitives.add(createBox(-150, -30, 990, 150, 20, 860, 0xe6c261)); //base
       primitives.add(createBox(-150, -30, 990, 150, 70, 960, 0xe6c261)); //encosto
-      primitives.add(createBox(-180, -30, 990, -150, 40, 860, 0xf4d58c)); //braços
+      primitives.add(createBox(-180, -30, 990, -150, 40, 860, 0xf4d58c)); //braï¿½os
       primitives.add(createBox(150, -30, 990, 180, 40, 860, 0xf4d58c));
       
       //Poltrona Leste
       primitives.add(createBox(200, -30, 800, 330, 20, 680, 0xe6c261)); //base
       primitives.add(createBox(300, -30, 800, 330, 70, 680, 0xe6c261)); //encosto
-      primitives.add(createBox(200, -30, 830, 330, 40, 800, 0xf4d58c)); //braços
+      primitives.add(createBox(200, -30, 830, 330, 40, 800, 0xf4d58c)); //braï¿½os
       primitives.add(createBox(200, -30, 680, 330, 40, 650, 0xf4d58c));
       
       //Poltrona Oeste
       primitives.add(createBox(-330, -30, 800, -200, 20, 680, 0xe6c261)); //base
       primitives.add(createBox(-330, -30, 800, -300, 70, 680, 0xe6c261)); //encosto
-      primitives.add(createBox(-330, -30, 830, -200, 40, 800, 0xf4d58c)); //braços
+      primitives.add(createBox(-330, -30, 830, -200, 40, 800, 0xf4d58c)); //braï¿½os
       primitives.add(createBox(-330, -30, 680, -200, 40, 650, 0xf4d58c));
       
       

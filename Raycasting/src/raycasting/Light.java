@@ -3,7 +3,7 @@ package raycasting;
 public class Light
 {
 
-   public final Vector position;
+   public Vector position;
 
    public final Color color;
 

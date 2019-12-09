@@ -45,8 +45,12 @@ public class Tracer
             camera.transform(ray.origin.set(0.0, 0.0, 1.0)).mul(-camera.distance);
             for (int wx = -xStart; wx < xStart; wx++)
             {
+               if(wx == 64 && finalY == 104)
+               {
+                  System.out.print("");
+               }
                camera.transform(ray.direction.set(wx, yStart - finalY, camera.fov)).normalize(); // multiplica o vetor pela matriz de transformação
-               pixels[offset++] = traceRay(scene, ray, 0); //passa a cena com os objetos e o raio transformado de acordo com as conf de câmera
+               pixels[offset++] = traceRay(scene, ray, 0, wx, finalY, xStart, yStart); //passa a cena com os objetos e o raio transformado de acordo com as conf de câmera
             }
          }));
       }
@@ -61,7 +65,7 @@ public class Tracer
       }
    }
 
-   private int traceRay(Scene scene, Ray ray, int level)
+   private int traceRay(Scene scene, Ray ray, int level, int wx, int y, int xStart, int yStart)
    {
       Ray hitRay = new Ray();
       Geometry intersected = scene.intersect(ray, hitRay);
@@ -69,6 +73,11 @@ public class Tracer
       if (intersected != null)
       {
          Material material = intersected.getMaterial();
+         
+         if(intersected instanceof Sphere)
+         {
+            System.out.print("");
+         }
 
          Vector kd = new Vector();
          Vector ks = new Vector();
