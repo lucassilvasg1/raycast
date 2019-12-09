@@ -2,12 +2,75 @@ package raycasting;
 
 public class Cone extends Geometry
 {
+	private final Vector position;
+	private final double radius;
+	private final double height;
+	private final String name = "Cone";
 
-   @Override
-   public boolean intersect(Ray inRay, Ray outRay)
+    public Cone(double x, double y, double z, double r, double h) {
+        position = new Vector(x, y, z);
+        radius = r;
+        height = h;
+    }
+    
+
+	public boolean intersect(Ray inRay, Ray outRay) {
+		double tan = (radius/height) * (radius/height);
+        double a = inRay.direction.x * inRay.direction.x + inRay.direction.z * inRay.direction.z - tan * inRay.direction.y * inRay.direction.y;
+
+        if (a != 0.0) {
+            double ox = inRay.origin.x - position.x;
+            double oy = height - inRay.origin.y + position.y;
+            double oz = inRay.origin.z - position.z;
+            double b = 2.0 * (ox * inRay.direction.x + oz * inRay.direction.z + tan * oy * inRay.direction.y);
+            double c = ox * ox + oz * oz - (tan * (oy * oy));
+            double descriminant = b * b - 4.0 * a * c;
+
+            if (descriminant >= 0) {
+                double d = Math.sqrt(descriminant);
+                double inv2A = 1.0 / (2.0 * a);
+                double t0 = (-b - d) * inv2A;
+                double t1 = (-b + d) * inv2A;
+                double t = Double.MAX_VALUE;
+                boolean intersects = false;
+
+                if (t0 > 0) {
+                    intersects = true;
+                    double y0 = inRay.origin.y + inRay.direction.y * t0 - position.y;
+                    if (y0 > 0 && y0 < height) {
+                        t = Math.min(t, t0);
+                    }
+                }
+
+                if (t1 > 0) {
+                    intersects = true;
+                    double y1 = inRay.origin.y + inRay.direction.y * t1 - position.y;
+                    if (y1 > 0 && y1 < height) {
+                        t = Math.min(t, t1);
+                    }
+                }
+
+                if (intersects) {
+                    outRay.origin.set(inRay.direction).mul(t).add(inRay.origin);
+                    double x = outRay.origin.x - position.x;
+                    double z = outRay.origin.z - position.z;
+                    double scaler = 1.0 / Math.sqrt(x * x + z * z);
+                    x *= scaler;
+                    z *= scaler;
+                    if (x * inRay.direction.x + z * inRay.direction.z > 0.0) {
+                        x = -x;
+                        z = -z;
+                    }
+                    outRay.direction.set(x, 0.0, z);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+   public String getName()
    {
-      // TODO Auto-generated method stub
-      return false;
+      return name;
    }
-
 }

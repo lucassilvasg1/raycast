@@ -347,6 +347,7 @@ public class Scene
       primitives.add(createCylinder(80, -30, 780, 3, 40, 0xf4d58c));
       primitives.add(createCylinder(-80, -30, 700, 3, 40, 0xf4d58c));
       primitives.add(createCylinder(80, -30, 700, 3, 40, 0xf4d58c));
+      primitives.add(createCone(-50, 20, 740, 20, 20, 0xf4d58c)); //Peso Cone
       
       
       //Sofa
@@ -448,6 +449,13 @@ public class Scene
    private Geometry createCylinder(double x, double y, double z, double radius, double height, int color)
    {
       Geometry geometry = new Cylinder(x, y, z, radius, height);
+      geometry.setMaterial(new Material(getAmbient(color), new Color(color), Color.WHITE));
+      return geometry;
+   }
+   
+   private Geometry createCone(double x, double y, double z, double radius, double height, int color)
+   {
+      Geometry geometry = new Cone(x, y, z, radius, height);
       geometry.setMaterial(new Material(getAmbient(color), new Color(color), Color.WHITE));
       return geometry;
    }
