@@ -5,7 +5,7 @@ public class Light
 
    public Vector position;
 
-   public final Color color;
+   public Color color;
 
    public Light(double x, double y, double z, Color c)
    {

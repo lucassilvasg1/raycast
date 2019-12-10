@@ -30,12 +30,18 @@ public class Controller
    public List<Color> specularColors = new ArrayList<Color>();
 
    public List<Geometry> listaRemovidos = new ArrayList<Geometry>();
+   
+   public static double rotationX = 0;
+   
+   public static double rotationY = 0;
+   
+   public static double distancia = 1500;
 
    public Controller(Viewer v, Scene s)
    {
       viewer = v;
       scene = s;
-      camera = new Camera(900.0, viewer.getHeight());
+      camera = new Camera(distancia, viewer.getHeight());
       pixels = new int[viewer.getWidth() * viewer.getHeight()];
       tracer = new Tracer(pixels, viewer.getWidth(), viewer.getHeight());
       position1 = scene.lights.get(0).position.z;
@@ -62,8 +68,8 @@ public class Controller
 
    public void step()
    {
-      camera.rotate(0.7, -0.3);
-      camera.distance = 1500;
+      camera.rotate(rotationX, rotationY);
+      camera.distance = distancia;
       tracer.render(camera, scene);
       viewer.setRGB(pixels);
 
@@ -191,6 +197,39 @@ public class Controller
             		index = index + 1;
             	}
             }
+            
+            if(e.getKeyCode() == KeyEvent.VK_UP)
+            {
+               rotationX += 0.01;
+               camera.rotate(rotationX, rotationY);
+            }
+            
+            if(e.getKeyCode() == KeyEvent.VK_DOWN)
+            {
+               rotationX -= 0.001;
+               camera.rotate(rotationX, rotationY);
+            }
+            if(e.getKeyCode() == KeyEvent.VK_LEFT)
+            {
+               rotationY += 0.001;
+               camera.rotate(rotationX, rotationY);
+            }
+            
+            if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+            {
+               rotationY -= 0.001;
+               camera.rotate(rotationX, rotationY);
+            }
+            if(e.getKeyCode() == KeyEvent.VK_MINUS)
+            {
+               distancia -= 5;
+               camera.distance = distancia;
+            }
+            if(e.getKeyCode() == KeyEvent.VK_EQUALS)
+            {
+               distancia += 5;
+               camera.distance = distancia;
+            }
          }
       });
 
@@ -219,7 +258,6 @@ public class Controller
          @Override
          public void mouseClicked(MouseEvent e)
          {
-            System.out.println(Thread.currentThread().getName()); 
             int ximg = (viewer.getWidth() - viewer.getImage().getWidth()) / 2;
             int yimg = (viewer.getHeight() - viewer.getImage().getHeight()) / 2;
             Point imgLocation = new Point(ximg, yimg);
@@ -228,22 +266,14 @@ public class Controller
             relative.x -= imgLocation.x;
             relative.y -= imgLocation.y;
 
-            // -150, 60, -110, 150, 70, 110,
             int x = relative.x - 300;
             int y = relative.y;
 
-            int xStart = viewer.getWidth() >> 1; // divide por dois
             int yStart = viewer.getHeight() >> 1;
 
             Ray ray = new Ray();
             camera.transform(ray.origin.set(0.0, 0.0, 1.0)).mul(-camera.distance);
-            camera.transform(ray.direction.set(x, yStart - y, camera.fov)).normalize(); // multiplica
-                                                                                        // o
-                                                                                        // vetor
-                                                                                        // pela
-                                                                                        // matriz
-                                                                                        // de
-                                                                                        // transformação
+            camera.transform(ray.direction.set(x, yStart - y, camera.fov)).normalize();
 
             Ray hitRay = new Ray();
             Geometry geometry = scene.intersect(ray, hitRay);
