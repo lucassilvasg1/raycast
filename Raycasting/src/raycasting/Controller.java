@@ -24,10 +24,10 @@ public class Controller
    public final double position1, position2, position3;
 
    public static double POSITION = 1000000;
-
-   public final Material material0;
-
-   public static boolean materialTrue = true;
+  
+   public List<Color> ambientColors = new ArrayList<Color>();
+   public List<Color> diffuseColors = new ArrayList<Color>();
+   public List<Color> specularColors = new ArrayList<Color>();
 
    public List<Geometry> listaRemovidos = new ArrayList<Geometry>();
 
@@ -41,7 +41,18 @@ public class Controller
       position1 = scene.lights.get(0).position.z;
       position2 = scene.lights.get(1).position.z;
       position3 = scene.lights.get(2).position.z;
-      material0 = scene.primitives.get(13).getMaterial();
+      
+      for (Geometry g : scene.primitives) {
+    	  diffuseColors.add(g.getMaterial().getDiffuse());
+      }
+      
+      for (Geometry g : scene.primitives) {
+    	  ambientColors.add(g.getMaterial().getAmbient());
+      }
+      
+      for (Geometry g : scene.primitives) {
+    	  specularColors.add(g.getMaterial().getSpecular());
+      }
    }
 
    public Viewer getView()
@@ -52,7 +63,7 @@ public class Controller
    public void step()
    {
       camera.rotate(0.7, -0.3);
-      camera.distance = 900;
+      camera.distance = 1500;
       tracer.render(camera, scene);
       viewer.setRGB(pixels);
 
@@ -72,65 +83,113 @@ public class Controller
          @Override
          public void keyPressed(KeyEvent e)
          {
-            if (e.getKeyCode() == KeyEvent.VK_1)
+        	 if(e.getKeyCode() == KeyEvent.VK_1)
+             {
+                Light l = scene.lights.get(0); 
+                
+                l.color =new Color(0, 0, 0);
+                
+             }
+             
+             if(e.getKeyCode() == KeyEvent.VK_2)
+             {
+                Light l = scene.lights.get(0); 
+                
+                l.color =new Color(0.5, 0.5, 0.5);
+                
+             }
+             
+             if(e.getKeyCode() == KeyEvent.VK_3)
+             {
+                Light l = scene.lights.get(0); 
+                
+                l.color =new Color(1, 1, 1);
+                
+             }
+             if(e.getKeyCode() == KeyEvent.VK_4)
+             {
+                Light l = scene.lights.get(1); 
+                
+                l.color =new Color(0, 0, 0);
+                
+             }
+             
+             if(e.getKeyCode() == KeyEvent.VK_5)
+             {
+                Light l = scene.lights.get(1); 
+                
+                l.color =new Color(0, 0, 0.5);
+                
+             }
+             
+             if(e.getKeyCode() == KeyEvent.VK_6)
+             {
+                Light l = scene.lights.get(1); 
+                
+                l.color =new Color(0, 0, 1);
+                
+             }if(e.getKeyCode() == KeyEvent.VK_7)
+             {
+                 Light l = scene.lights.get(2); 
+                 
+                 l.color =new Color(0, 0, 0);
+                 
+              }
+              
+              if(e.getKeyCode() == KeyEvent.VK_8)
+              {
+                 Light l = scene.lights.get(2); 
+                 
+                 l.color =new Color(0.5, 0.5, 0.5);
+                 
+              }
+              
+              if(e.getKeyCode() == KeyEvent.VK_9)
+              {
+                 Light l = scene.lights.get(2); 
+                 
+                 l.color =new Color(1, 1, 1);
+                 
+              }
+          
+              
+            if (e.getKeyCode() == KeyEvent.VK_A)
             {
-               Light l = scene.lights.get(0);
-
-               if (l.position.z == POSITION)
-               {
-                  l.position.z = position1;
-               }
-               else
-               {
-                  l.position = new Vector(l.position.x, l.position.y, POSITION);
-               }
+            	for (Geometry g : scene.primitives) {
+            		Color ambient = g.getMaterial().getAmbient();
+            		g.setMaterial(new Material(ambient, new Color(0.0 , 0.0 , 0.0), new Color(0.0 , 0.0 , 0.0)));
+            	}
+ 
             }
-            if (e.getKeyCode() == KeyEvent.VK_2)
+            
+            if (e.getKeyCode() == KeyEvent.VK_S)
             {
-               Light l = scene.lights.get(1);
-
-               if (l.position.z == POSITION)
-               {
-                  l.position.z = position2;
-               }
-               else
-               {
-                  l.position = new Vector(l.position.x, l.position.y, POSITION);
-               }
-            }
-            if (e.getKeyCode() == KeyEvent.VK_3)
-            {
-               Light l = scene.lights.get(2);
-
-               if (l.position.z == POSITION)
-               {
-                  l.position.z = position3;
-               }
-               else
-               {
-                  l.position = new Vector(l.position.x, l.position.y, POSITION);
-               }
-            }
-            if (e.getKeyCode() == KeyEvent.VK_M)
-            {
-               if (materialTrue == true)
-               {
                   for (Geometry g : scene.primitives)
                   {
-                     g.setMaterial(new Material(new Color(0.1745, 0.01175, 0.01175), new Color(0.61424, 0.04136, 0.04136),
-                           new Color(0.727811, 0.626959, 0.626959)));
+                	 Color specular = g.getMaterial().getSpecular();
+                     g.setMaterial(new Material(new Color(0.0, 0.0, 0.0), new Color(0.0, 0.0, 0.0), specular));
                   }
-                  materialTrue = false;
-               }
-               else
-               {
+            }
+            
+            if (e.getKeyCode() == KeyEvent.VK_D)
+            {
                   for (Geometry g : scene.primitives)
                   {
-                     g.setMaterial(material0);
+                	 Color diffuse = g.getMaterial().getDiffuse();
+                     g.setMaterial(new Material(new Color(0.0, 0.0, 0.0), diffuse, new Color(0.0, 0.0, 0.0)));
                   }
-                  materialTrue = true;
-               }
-
+            }
+            
+            if (e.getKeyCode() ==  KeyEvent.VK_R) {
+            	int index = 0;
+            	for (Geometry g : scene.primitives) {
+            		Color ambient = ambientColors.get(index);
+            		Color diffuse = diffuseColors.get(index);
+            		Color specular = specularColors.get(index);
+            		
+            		g.setMaterial(new Material(ambient, diffuse, specular));
+            		index = index + 1;
+            	}
             }
          }
       });
@@ -197,7 +256,11 @@ public class Controller
             }
             else
             {
+            	int index = scene.primitives.indexOf(geometry);
                scene.primitives.remove(geometry);
+               ambientColors.remove(index);
+               specularColors.remove(index);
+               diffuseColors.remove(index);
                listaRemovidos.add(geometry);
                System.out.println(geometry.getClass().getCanonicalName());
             }

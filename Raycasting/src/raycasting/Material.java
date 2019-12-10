@@ -25,6 +25,21 @@ public class Material
       specular = ks;
       glossiness = nr;
    }
+   
+   public Color getAmbient() {
+	   return ambient;
+   }
+   
+   public Color getDiffuse() {
+	   if (diffuse == null) {
+		   return Color.WHITE;
+	   }
+	   return diffuse;
+   }
+   
+   public Color getSpecular() {
+	   return specular;
+   }
 
    public Color computeDiffuse(Ray r)
    {
@@ -40,4 +55,5 @@ public class Material
    {
       return glossiness;
    }
+   
 }

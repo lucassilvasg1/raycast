@@ -21,7 +21,7 @@ public class Scene
       
       //chao
       primitives.add(createBox(-700, -30, -1000, 700, -29, 1000, 0x3c1301));
-      primitives.add(createPlane(0, 1, 0, -30));
+      //primitives.add(createPlane(0, 1, 0, -30));
       //paredes
       primitives.add(createBox(-700, -30, -1000, -681, 470, 1000, 0x91a5ae)); //Oeste
       primitives.add(createBox(-700, -30, 1000, 700, 470, 1010, 0x6d7c85)); //Norte
